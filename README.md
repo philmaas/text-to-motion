@@ -10,7 +10,8 @@
 Anaconda is recommended to create this virtual environment.
   
   ```sh
-  conda create -f environment.yaml
+  conda config --add channels conda-forge
+  conda env create -f environment.yaml
   conda activate text2motion_pub
   ```
   
@@ -18,13 +19,13 @@ If you cannot successfully create the environment, here is a list of required li
   ```
   Python = 3.7.9   # Other version may also work but are not tested.
   PyTorch = 1.6.0 (conda install pytorch==1.6.0 torchvision==0.7.0 -c pytorch)  #Other version may also work but are not tested.
-  scipy
-  numpy
-  tensorflow       # For use of tensorboard only
-  spacy
-  tqdm
-  ffmpeg = 4.3.1   # Other version may also work but are not tested.
-  matplotlib = 3.3.1
+pip3 install scipy
+pip3 install numpy
+pip3 install tensorflow       # For use of tensorboard only
+pip3 install spacy
+pip3 install tqdm
+pip3 install ffmpeg  # Other version may also work but are not tested.
+pip3 install matplotlib==3.3.1
   ```
   
   After all, if you want to generate 3D motions from customized raw texts, you still need to install the language model for spacy. 
@@ -123,7 +124,7 @@ where *--est_length* asks the model to use sampled motion lengths for generation
 
 #### Sampling results from customized descriptions
 ```sh
-python gen_motion_script.py --name Comp_v6_KLD01 --text_file input.txt --repeat_time 3 --ext customized --gpu_id 1
+python gen_motion_script.py --name Comp_v6_KLD01 --text_file input.txt --repeat_time 3 --ext customized --gpu_id 0 #set to 0 to use main GPU
 ```
 This will generate 3 animated motions for each description given in text_file *./input.txt*.
 
